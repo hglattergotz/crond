@@ -1,0 +1,21 @@
+{
+    "name": "hglattergotz/crond",
+    "type": "library",
+    "description": "Manage crontab files in /etc/cron.d",
+    "keywords": [ "cron", "crontab" ],
+    "homepage": "http://github.com/hglattergotz/crond",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henning Glatter-Götz",
+            "email": "henning@glatter-gotz.com"
+            "homepage": "http://glatter-gotz.com"
+        },
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": { "HGG\\Crond\\": "src/" }
+    },
+}
