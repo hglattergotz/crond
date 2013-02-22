@@ -1,5 +1,5 @@
 {
-    "name": "hglattergotz/crond",
+    "name": "hgg/crond",
     "type": "library",
     "description": "Manage crontab files in /etc/cron.d",
     "keywords": [ "cron", "crontab" ],
