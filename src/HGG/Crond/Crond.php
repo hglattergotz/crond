@@ -19,6 +19,12 @@ use HGG\Crond\Job;
  */
 class Crond
 {
+    /**
+     * cronPath
+     *
+     * @var mixed
+     * @access protected
+     */
     protected $cronPath;
 
     public function __construct($cronPath = '/etc/cron.d')

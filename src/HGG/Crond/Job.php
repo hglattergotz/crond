@@ -116,7 +116,22 @@ class Job
     /**
      * setTime
      *
-     * @param mixed $cronTime
+     * A string that represents the customary cron time format:
+     *   minute   hour   day   month   dayofweek
+     *
+     *   minute    - any integer from 0 to 59
+     *   hour      - any integer from 0 to 23
+     *   day       - any integer from 1 to 31 (must be a valid day if a month is
+     *               specified)
+     *   month     - any integer from 1 to 12 (or the short name of the month such
+     *               as jan or feb)
+     *   dayofweek - any integer from 0 to 7, where 0 or 7 represents Sunday (or
+     *               the short name of the week such as sun or mon)
+     *
+     *   Example: run the command at 7 am every day
+     *            0 7 * * *
+     *
+     * @param string $cronTime
      * @access public
      * @return void
      */
@@ -139,7 +154,7 @@ class Job
     /**
      * setFileName
      *
-     * @param mixed $fileName
+     * @param string $fileName
      * @access public
      * @return void
      */

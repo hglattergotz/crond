@@ -13,3 +13,27 @@ Using Composer:
     }
 }
 ```
+
+## Usage
+```php
+<?php
+use HGG\Crond\Job;
+
+$job = new Job();
+$job->setUser('root');
+$job->setCmd('/path/to/do/something/awesome');
+$job->setTime('0 * * * *');
+$job->setFileName('myCronJob');
+
+$cron = new Crond();
+$cron->install($job);
+```
+
+The above will install the cron job
+
+    0 * * * * root /path/to/do/something/awesome
+
+in a file located at
+
+    /etc/cron.d/myCronJob
+
