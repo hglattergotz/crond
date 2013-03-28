@@ -18,6 +18,7 @@ Using Composer:
 ```php
 <?php
 use HGG\Crond\Job;
+use HGG\Crond\Crond;
 
 $job = new Job();
 $job->setUser('root');
