@@ -58,15 +58,32 @@ class Crond
     /**
      * isInstalled
      *
+     * Check if a HGG\Crond\Job instance is installed.
+     *
      * @param mixed $job
      * @access public
-     * @return void
+     * @return boolean
      */
     public function isInstalled($job)
     {
-        $fileName = $job->getFileName();
+        return $this->isInstalledFName($job->getFileName());
+    }
 
-        if (null == $fileName) {
+    /**
+     * isInstalledFName
+     *
+     * Check if a cron job is installed by using the file name passed as a
+     * paramter.
+     * This is usually a bit handier than first having to construct an instance
+     * of HGG\Crond\Job.
+     *
+     * @param string $fileName The file name the cron job is stored in
+     * @access public
+     * @return boolean
+     */
+    public function isInstalledFName($fileName)
+    {
+        if (null == $fileName || '' == $fileName) {
             throw new \InvalidArgumentException('The file name is not set!');
         }
 
@@ -76,19 +93,35 @@ class Crond
     /**
      * uninstall
      *
-     * @param mixed $job
+     * @param HGG\Crond\Job $job
+     * @param boolean $throwException
+     * @access public
+     * @return boolean
+     */
+    public function uninstall($job, $throwException = true)
+    {
+        return $this->uninstallFName($job->getFileName(), $throwException);
+    }
+
+    /**
+     * uninstallFName
+     *
+     * @param mixed $fileName
+     * @param bool $throwException
      * @access public
      * @return void
      */
-    public function uninstall($job)
+    public function uninstallFName($fileName, $throwException = true)
     {
-        if (false == $this->isInstalled($job)) {
-            throw new \Exception('A cron job with the file name '.
-                $job->getFileName().' is not installed!');
+        if (false == $this->isInstalledFName($fileName)) {
+            if ($throwException) {
+                throw new \Exception('A cron job with the file name '.
+                    $fileName.' is not installed!');
+            } else {
+                return false;
+            }
         }
 
-        $fileName = $job->getFileName();
-
         return unlink($this->cronPath.'/'.$fileName);
-    }
+   }
 }
