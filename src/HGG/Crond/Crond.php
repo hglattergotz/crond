@@ -22,7 +22,7 @@ class Crond
     /**
      * cronPath
      *
-     * @var mixed
+     * @var string
      * @access protected
      */
     protected $cronPath;
@@ -30,6 +30,17 @@ class Crond
     public function __construct($cronPath = '/etc/cron.d')
     {
         $this->cronPath = $cronPath;
+    }
+
+    /**
+     * getCronPath
+     *
+     * @access public
+     * @return string
+     */
+    public function getCronPath()
+    {
+        return $this->cronPath;
     }
 
     /**
